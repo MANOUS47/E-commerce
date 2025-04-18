@@ -1,0 +1,157 @@
+<section class="w-1/2 mx-auto bg-gray-50 p-4 rounded border-1 shadow ">
+    <h1 class="text-4xl py-3 text-center text-green-600 font-light">Register Now</h1>
+    <form [formGroup]="registeriton" (ngSubmit)="submitForm()">
+        <div class="mb-6">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name :</label>
+            <input formControlName="name" type="text" id="name"
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            @if (registeriton.get('name')?.errors && registeriton.get('name')?.touched ) {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-50 dark:text-red-500"
+                role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registeriton.get('name')?.getError('required')) {
+                        <li>Name is required</li>
+                        }@else if (registeriton.get('name')?.getError('minlength')) {
+                        <li>At least 3 characters (and up to 20 characters)</li>
+                        }@else if (registeriton.get('name')?.getError('maxlength')) {
+                        <li>At highst 20 characters (and up to only 20 characters)</li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>}
+
+        </div>
+
+        <div class="mb-6">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email :</label>
+            <input formControlName="email" type="email" id="email"
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            @if (registeriton.get('email')?.errors && registeriton.get('email')?.touched ) {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-50 dark:text-red-500"
+                role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registeriton.get('email')?.getError('required')) {
+                        <li>Email is required</li>
+                        }@else if (registeriton.get('email')?.getError('email')) {
+                        <li>Enter valid Email</li>
+                        }
+
+
+                    </ul>
+                </div>
+            </div>}
+
+        </div>
+
+        <div class="mb-6">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Password
+                :</label>
+            <input formControlName="password" type="password" id="password"
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            @if (registeriton.get('password')?.errors && registeriton.get('password')?.touched ) {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-50 dark:text-red-500"
+                role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registeriton.get('password')?.getError('required')) {
+                        <li>Password is required</li>
+                        }@else if (registeriton.get('password')?.getError('pattern')) {
+                        <li>Enter valid Password</li>
+                        }
+                    </ul>
+                </div>
+            </div>}
+
+        </div>
+
+        <div class="mb-6">
+
+            <label for="rePassword" class="block mb-2 text-sm font-medium text-gray-900 ">RePassword
+                :</label>
+            <input formControlName="rePassword" type="password" id="rePassword"
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            @if (registeriton.getError('mismatch') && registeriton.get('rePassword')?.touched ) {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-50 dark:text-red-500"
+                role="alert">
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        <li>Password confirmation is not correct</li>
+                    </ul>
+                </div>
+            </div>}
+
+        </div>
+
+        <div class="mb-6">
+
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 ">Phone :</label>
+            <input formControlName="phone" type="tel" id="phone"
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            @if (registeriton.get('phone')?.errors && registeriton.get('phone')?.touched ) {
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-50 dark:text-red-500"
+                role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+                        @if (registeriton.get('phone')?.getError('required')) {
+                        <li>Phone is required</li>
+                        }@else if (registeriton.get('phone')?.getError('pattern')) {
+                        <li>Enter valid Phone Number</li>
+                        }
+                    </ul>
+                </div>
+            </div>}
+
+        </div>
+
+        <button type="submit" [disabled]="isLoading" class="btn-main">Sign Up
+
+            @if (isLoading) {
+            <span> <i class="fas fa-spin fa-spinner"></i> </span>
+            }
+        </button>
+
+        @if (msgError) {
+        <p class="bg-red-600 text-white px-2 py-2 w-fit rounded ">{{msgError}}</p>
+        }
+        @if (isSuccess) {
+
+        <p class="bg-teal-700 text-white px-2 py-2 w-fit rounded ">Account created successfully</p>
+
+        }
+
+    </form>
+</section>

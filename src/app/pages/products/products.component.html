@@ -1,0 +1,52 @@
+<section class="mt-5">
+
+    <input [(ngModel)]="searchText" type="search" placeholder="Search by Name....." class=" mx-auto form-control ">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for ( prod of Products() | search : searchText ; track prod._id) {
+
+        <div
+            class="card group rounded-md pb-14 bg-white overflow-hidden hover:shadow-[0px_0px_10px_3px_rgba(34,197,94,0.4)] transition-shadow duration-300 relative ">
+            <div [routerLink]=" ['/details' , prod._id] ">
+                <div class="card-img">
+                    <img [src]="prod.imageCover" class="w-full h-[250px] object-contain" [alt]="prod.title">
+
+                </div>
+                <div class="card-body mb-4 px-2 py-4">
+                    <h4 class="text-green-500 text-xs">
+                        {{prod.category.name}} </h4>
+
+                    <h3 class="font-medium">
+                        {{prod.title.split(" ", 3 ).join(" ") }}
+                    </h3>
+                    <div class="flex justify-between items-center">
+                        <span> {{prod.price | currency :"GBP" }} </span>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-300"></i>
+                            <span class="text-gray-500"> {{prod.ratingsAverage}} </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <span role="button" (click)="onHeartClick(prod._id, $event)"
+                class="text-2xl absolute bottom-11 right-1 cursor-pointer">
+                <i class="fa-solid fa-heart transition-colors duration-300" [ngClass]="{
+              'text-red-600': isLiked(prod._id),
+              'text-gray-800': !isLiked(prod._id)
+            }"></i>
+            </span>
+
+            <!-- 
+            <span (click)="addToList(prod._id)" role="button" class="pe-2 absolute end-0 bottom-10 text-2xl"><i
+                    class="fa-solid fa-heart"></i></span> -->
+
+            <button (click)="addToCart(prod._id)"
+                class="bg-green-600 absolute -bottom-16 left-5 right-5 group-hover:bottom-2 duration-500 text-white py-2 my-5 px-10 w-[80%] block mx-auto border rounded">
+                Add
+                To Cart
+            </button>
+        </div>
+        }
+    </div>
+</section>

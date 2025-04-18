@@ -1,0 +1,55 @@
+@if (cartDetalis.totalCartPrice) {
+<section class="bg-gray-50 rounded shadow p-4 mx-auto w-[90%]">
+    <h2 class="text-center font-medium text-4xl text-green-500 py-3 mb-5">Shop Cart <i
+            class=" fas fa-shopping-cart "></i>
+    </h2>
+
+    <span class="text-teal-600 border-b-2">Total Cart Price = {{cartDetalis.totalCartPrice | currency:'GBP' }}</span>
+
+    @for (pro of cartDetalis.products; track pro.product.id) {
+
+
+    <div class="grid md:grid-cols-[10%_minmax(0,1fr)] my-5 border-b-2 ">
+
+        <div class=" m-3">
+            <img [src]="pro.product.imageCover" class="w-full" [alt]="pro.product.title">
+        </div>
+
+        <div class="flex items-center justify-between">
+
+            <div class="flex flex-col items-start">
+                <h3 class="text-green-500">{{pro.product.title}}</h3>
+                <span class="text-gray-600 mt-3"> Price : {{pro.price | currency :'GBP'}}</span>
+                <button (click)="removeItem(pro.product.id)" class="text-red-500 mt-3"> <i
+                        class="fas fa-trash-can text-red-700"></i> Remove </button>
+            </div>
+
+            <div class=" flex items-center gap-3">
+                <button (click)="updateCount(pro.product.id , pro.count +1)" class="text-green-500 text-3xl">
+                    <i class="fa-regular fa-square-plus"></i>
+                </button>
+                <span>{{pro.count}}</span>
+                <button (click)="updateCount(pro.product.id , pro.count -1)" class="text-green-500 text-3xl">
+                    <i class="fa-regular fa-square-minus"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    }
+
+    <div class="flex justify-between">
+        <button class="bg-green-600 text-white py-2 my-5 px-10 block border rounded "
+            [routerLink]="['/checkout' , cartDetalis._id]">
+            Check Out <i class="fa-solid fa-money-check-dollar text-white"></i>
+        </button>
+
+        <button class="bg-red-700 text-white py-2 my-5 px-10 block border rounded " (click)="clearCartItems()">
+            Clear Cart <i class="fas fa-trash-can text-white"></i>
+        </button>
+    </div>
+
+</section>
+}@else {
+<h1 class="text-center font-medium text-4xl text-green-800 py-3 mt-16"> 'Your Cart is Empty' </h1>
+}

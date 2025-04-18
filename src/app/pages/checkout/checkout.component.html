@@ -1,0 +1,37 @@
+<section>
+    <h3 class="font-medium text-4xl text-green-500 py-3 border-b-black border-b-4 w-fit mx-auto mb-5">Check
+        Out</h3>
+
+    <form [formGroup]="checkoutForm" class="p-5 w-1/2 mx-auto" (ngSubmit)="submitForm()">
+
+        <div class="mb-5">
+
+            <label for="details" class="block mb-2 text-sm font-medium text-gray-900">Details :</label>
+            <textarea formControlName="details" id="details"
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+
+        </div>
+
+        <div class="mb-5">
+
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 ">Phone :</label>
+            <input formControlName="phone" type="tel" id="phone"
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+        </div>
+        <div class="mb-5">
+
+            <label for="city" class="block mb-2 text-sm font-medium text-gray-900">City :</label>
+            <input formControlName="city" type="text" id="city"
+                class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:text-gray-800 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+        </div>
+
+
+        <button class="btn-main" type="submit" [disabled]="checkoutForm.invalid"> Online Payment</button>
+
+    </form>
+
+
+
+</section>

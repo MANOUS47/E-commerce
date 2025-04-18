@@ -1,0 +1,29 @@
+<section>
+
+    <h2 class="text-center text-4xl text-teal-700 border-b-4 my-5 py-8">All
+        Categories
+    </h2>
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        @for (Cat of iCategory(); track Cat._id) {
+        <div
+            class=" bg-white borderrounded transition-shadow duration-500 hover:shadow-[0_0_15px_3px_rgba(59,130,246,0.5)]">
+            <img [src]="Cat.image" class="w-full h-[300px]" [alt]="Cat.name">
+            <h3 class="text-green-700 text-center text-xl my-5"> {{Cat.name}} </h3>
+        </div>
+        }
+
+    </div>
+
+
+</section>
+
+<!-- <div class="grid sm:grid-cols-2 mt-7 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for (brands of iCategory(); track brands._id ) {
+        <div 
+            class=" border-black rounded transition-shadow duration-500 hover:shadow-[0_0_15px_3px_rgba(59,130,246,0.5)]">
+            <img [src]="brands.image" class="w-full border shadow h-[250px]" [alt]="brands.name">
+
+        </div>
+        }
+    </div> -->

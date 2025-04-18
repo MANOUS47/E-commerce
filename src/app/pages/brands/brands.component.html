@@ -1,0 +1,12 @@
+<section>
+    <h1 class="text-5xl py-3 text-center text-green-600 font-light my-4 mt-6">All Brands</h1>
+    <div class="grid sm:grid-cols-2 mt-7 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for (brands of iBrands(); track brands._id ) {
+        <div (click)="showAlert(brands)"
+            class=" border-black rounded transition-shadow duration-500 hover:shadow-[0_0_15px_3px_rgba(59,130,246,0.5)]">
+            <img [src]="brands.image" class="w-full border shadow h-[250px]" [alt]="brands.name">
+
+        </div>
+        }
+    </div>
+</section>
